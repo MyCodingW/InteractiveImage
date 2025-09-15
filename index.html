@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Interactive Image</title>
+  <style>
+    #map { max-width: 100%; }
+    .tooltip { position:absolute; background:#333; color:#fff; padding:4px; display:none; }
+  </style>
+</head>
+<body>
+  <img src="smiley.jpeg" id="map">
+  <div class="tooltip" id="tip"></div>
+
+  <script>
+    const img = document.getElementById('map');
+    const tip = document.getElementById('tip');
+    img.addEventListener('mousemove', e => {
+      tip.style.left = e.pageX + 10 + 'px';
+      tip.style.top = e.pageY + 10 + 'px';
+      tip.textContent = `X:${e.offsetX}, Y:${e.offsetY}`;
+      tip.style.display = 'block';
+    });
+    img.addEventListener('mouseleave', ()=> tip.style.display='none');
+  </script>
+</body>
+</html>
